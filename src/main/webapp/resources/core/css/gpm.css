@@ -1,0 +1,19 @@
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+
+.navbar-inverse {
+	background-color: #286090;
+  	border-color: #204d74;
+}
+
+.container {
+  width: 98%;
+}
+
+div#paddingTop100 {
+	display: block;
+	padding-top: 140px;		
+}
+
+.table-striped tbody tr.highlight td { background-color: #449d44; }
