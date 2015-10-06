@@ -1,3 +1,3 @@
 <footer>
-	<p>&copy; JMC 2015</p>
+	<p>&copy; JPM 2015</p>
 </footer>

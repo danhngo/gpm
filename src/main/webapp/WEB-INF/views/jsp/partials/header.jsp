@@ -1,9 +1,9 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>  
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <head>
-<title>JMC HR</title>
+<title>PM</title>
 
 <s:url value="/resources/core/css/gpm.css" var="gpmCss" />
 <s:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss" />
@@ -40,49 +40,32 @@
        <span class="icon-bar"></span>
        <span class="icon-bar"></span>
      </button>
-     <a class="navbar-brand" href="/gpm">JMC HRMS</a>
+     <a class="navbar-brand" href="/gpm">PM</a>
      <div class="navbar-collapse nav-collapse collapse navbar-header">
        <ul class="nav navbar-nav">
          <li class="dropdown">
-           <a href="#" class="dropdown-toggle js-activated">Employee<b class="caret"></b></a>
+           <a href="#" class="dropdown-toggle js-activated">Văn Bản<b class="caret"></b></a>
            <ul class="dropdown-menu">
-             <li><a href="/gpm/employee/list">Management</a></li>
+             <li><a href="/gpm/employee/list">Quản Lý</a></li>
              <li class="divider"></li>
-             <li><a href="/gpm/employee/import">Import Profile</a></li>
+             <li><a href="/gpm/employee/import">Thêm</a></li>
            </ul>
          </li>
          <li class="dropdown">
-           <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Payroll<b class="caret"></b></a>
+           <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Tổng Hợp<b class="caret"></b></a>
            <ul class="dropdown-menu">
-              <li><a href="#">Import Attendance</a></li>
-			  <li><a href="#">Formula</a></li>
-			  <li><a href="#">Calculation</a></li>
+              <li><a href="#">Xuất</a></li>			  
            </ul>
          </li>
-          <li class="dropdown">
-           <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Social Insurance<b class="caret"></b></a>
-           <ul class="dropdown-menu">
-              <li><a href="#">Form Management</a></li>
-			  <li><a href="#">Export...</a></li>
-           </ul>
-         </li>
-          <li class="dropdown">
-           <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Personal Income Tax<b class="caret"></b></a>
-           <ul class="dropdown-menu">
-              <li><a href="#">Formula Management</a></li>
-			  <li><a href="#">Calculation</a></li>
-           </ul>
-         </li>
-         
+       
          <li class="dropdown">
-           <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Account <b class="caret"></b></a>
+           <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Tài Khoản <b class="caret"></b></a>
            <ul class="dropdown-menu">
-             <li><a tabindex="-1" href="#">My Account</a></li>
+             <li><a tabindex="-1" href="#">Tài Khoản</a></li>
              <li class="divider"></li>
-             <li><a tabindex="-1" href="#">Change Email</a></li>
-             <li><a tabindex="-1" href="#">Change Password</a></li>
+             <li><a tabindex="-1" href="#">Đổi Mật Khẩu</a></li>
              <li class="divider"></li>
-             <li><a tabindex="-1" href="#">Logout</a></li>
+             <li><a tabindex="-1" href="#">Đăng Xuất</a></li>
            </ul>
          </li>
         
