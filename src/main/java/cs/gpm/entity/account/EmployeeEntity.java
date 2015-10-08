@@ -1,4 +1,4 @@
-package cs.gpm.entity.employee;
+package cs.gpm.entity.account;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

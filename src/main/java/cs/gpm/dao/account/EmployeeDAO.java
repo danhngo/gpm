@@ -1,11 +1,11 @@
-package cs.gpm.dao.employee;
+package cs.gpm.dao.account;
 
 import java.util.List;
 
 import org.hibernate.Session;
 
 import cs.gpm.HibernateUtil;
-import cs.gpm.entity.employee.EmployeeEntity;
+import cs.gpm.entity.account.EmployeeEntity;
 
 public class EmployeeDAO {
 	

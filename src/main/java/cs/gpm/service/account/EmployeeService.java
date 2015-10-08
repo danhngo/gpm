@@ -1,4 +1,4 @@
-package cs.gpm.service.employee;
+package cs.gpm.service.account;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import cs.gpm.dao.employee.EmployeeDAO;
-import cs.gpm.entity.employee.EmployeeEntity;
-import cs.gpm.model.employee.EmployeeModel;
+import cs.gpm.dao.account.EmployeeDAO;
+import cs.gpm.entity.account.EmployeeEntity;
+import cs.gpm.model.account.EmployeeModel;
 
 @Service
 public class EmployeeService {

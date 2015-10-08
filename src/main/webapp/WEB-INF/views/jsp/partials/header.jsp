@@ -46,9 +46,9 @@
          <li class="dropdown">
            <a href="#" class="dropdown-toggle js-activated">Văn Bản<b class="caret"></b></a>
            <ul class="dropdown-menu">
-             <li><a href="/gpm/employee/list">Quản Lý</a></li>
+             <li><a href="/gpm/document/list">Quản Lý</a></li>
              <li class="divider"></li>
-             <li><a href="/gpm/employee/import">Thêm</a></li>
+             <li><a href="/gpm/document/import">Thêm</a></li>
            </ul>
          </li>
          <li class="dropdown">

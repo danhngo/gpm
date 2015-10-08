@@ -30,8 +30,8 @@ import org.springframework.web.servlet.ModelAndView;
 import cs.gpm.ExcelUtil;
 import cs.gpm.form.EmployeeForm;
 import cs.gpm.form.ImportInfoForm;
-import cs.gpm.model.employee.EmployeeModel;
-import cs.gpm.service.employee.EmployeeService;
+import cs.gpm.model.account.EmployeeModel;
+import cs.gpm.service.account.EmployeeService;
 
 @Controller("employee")
 public class EmployeeController {
@@ -202,18 +202,6 @@ public class EmployeeController {
 		
 	}
 	
-	
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Map<String, Object> model) {
-
-		logger.debug("index() is executed!");
-
-		//model.put("title", employeeService.getTitle(""));
-		//model.put("msg", employeeService.getDesc());
-		
-		return "index";
-	}
 
 	/*@RequestMapping(value = "/hello/{name:.+}", method = RequestMethod.GET)
 	public ModelAndView hello(@PathVariable("name") String name) {

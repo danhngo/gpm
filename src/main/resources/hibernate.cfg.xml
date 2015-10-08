@@ -12,7 +12,10 @@
     <property name="show_sql">true</property>
     <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.hbm2ddl.auto">update</property>    
-    <mapping class="cs.gpm.entity.employee.EmployeeEntity"/>          
+    
+    
+    <mapping class="cs.gpm.entity.account.EmployeeEntity"/>          
+    <mapping class="cs.gpm.entity.document.DocumentEntity"/>
    </session-factory>
 </hibernate-configuration> 
 

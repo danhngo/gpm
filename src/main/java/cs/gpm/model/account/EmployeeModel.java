@@ -1,4 +1,4 @@
-package cs.gpm.model.employee;
+package cs.gpm.model.account;
 
 public class EmployeeModel {
 	private String empId;

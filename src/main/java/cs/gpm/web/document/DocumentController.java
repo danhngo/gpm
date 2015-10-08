@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -28,49 +27,75 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import cs.gpm.ExcelUtil;
-import cs.gpm.form.EmployeeForm;
+import cs.gpm.form.DocumentForm;
 import cs.gpm.form.ImportInfoForm;
-import cs.gpm.model.employee.EmployeeModel;
-import cs.gpm.service.employee.EmployeeService;
+import cs.gpm.model.document.DocumentModel;
+import cs.gpm.service.document.DocumentService;
 
 @Controller
 public class DocumentController {
 
 	private final Logger logger = LoggerFactory.getLogger(DocumentController.class);
-	private final EmployeeService employeeService;
+	private final DocumentService documentService;
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index(Map<String, Object> model) {
+
+		logger.debug("index() is executed!");
+		
+		return "index";
+	}
 
 	@Autowired
-	public DocumentController(EmployeeService employeeService) {
-		this.employeeService = employeeService;
+	public DocumentController(DocumentService documentService) {
+		this.documentService = documentService;
 	}
 	
-	@RequestMapping(value = "/employee/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/document/list", method = RequestMethod.GET)
+	public ModelAndView getDocumentList() {
+		//model.put("importInfoForm", new ImportInfoForm()); 
+		logger.info("getDocumentList() is executed");
+		
+		List<DocumentModel> documentList = documentService.getDocumentList();
+		
+		ModelAndView model = new ModelAndView();
+		model.setViewName("document/list");
+		DocumentForm document = new DocumentForm();
+		
+		model.addObject("documentForm",document);
+		model.addObject("documentList", documentList);
+				
+		return model;
+	}
+	
+	@RequestMapping(value = "/document/delete", method = RequestMethod.POST)
 	@ResponseBody
-	public String deleteEmp(@RequestBody String empId) {
+	public String deleteDocument(@RequestBody String id) {
 		logger.info("deleteEmp() is executed");
-		empId = empId.replace("=", "");
-		employeeService.deleteEmployee(empId);
+		id = id.replace("=", "");
+		documentService.deleteDocument(id);
 		
 		return "success";
 	}
 		
 	
-	@RequestMapping(value = "/employee/update", method = RequestMethod.POST)
-	public ModelAndView updateEmp(@ModelAttribute EmployeeModel model) {
+	@RequestMapping(value = "/document/update", method = RequestMethod.POST)
+	public ModelAndView updateEmp(@ModelAttribute DocumentModel model) {
 		logger.info("value() is executed");
-		employeeService.updateEmployee(model);
+		documentService.updateDocument(model);
 		
-		return employeeList();
+		return getDocumentList();
 	}
 	
-	@RequestMapping(value = "/employee/import", method = RequestMethod.GET)
+	@RequestMapping(value = "/document/import", method = RequestMethod.GET)
 	public String showImport(Map<String, Object> model) {
 		model.put("importInfoForm", new ImportInfoForm()); 
 		logger.info("showImport() is executed");
 		
 		return "employee/import";
 	}
-	@RequestMapping(value = "/employee/importexcel", method = RequestMethod.POST)
+	
+	/*@RequestMapping(value = "/employee/importexcel", method = RequestMethod.POST)
 	public ModelAndView importEmployee(@RequestParam("file") MultipartFile file) {
 
 		logger.info("importexcel() is executed");
@@ -88,19 +113,19 @@ public class DocumentController {
 			lstEmployee.add(model);
 		}
 				
-		employeeService.importEmployee(lstEmployee);
+		documentService.importEmployee(lstEmployee);
 		
 		
-		List<EmployeeModel> employeeList = employeeService.getEmployeeList();
+		List<EmployeeModel> employeeList = documentService.getEmployeeList();
 		
 		ModelAndView model = new ModelAndView();
 		model.setViewName("employee/list");
 		model.addObject("employeeList", employeeList);
 		
 		return model;
-	}
+	}*/
 	
-	@RequestMapping(value = "/employee/extractdata", method = RequestMethod.POST)
+	@RequestMapping(value = "/document/extractdata", method = RequestMethod.POST)
 	public ModelAndView extractData(@RequestParam("file") MultipartFile file) {
 
 		logger.info("extractdata() is executed");
@@ -119,23 +144,9 @@ public class DocumentController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/employee/list", method = RequestMethod.GET)
-	public ModelAndView employeeList() {
-		//model.put("importInfoForm", new ImportInfoForm()); 
-		logger.info("employeeList() is executed");
-		
-		List<EmployeeModel> employeeList = employeeService.getEmployeeList();
-		
-		ModelAndView model = new ModelAndView();
-		model.setViewName("employee/list");
-		EmployeeForm employee = new EmployeeForm();
-		model.addObject("employeeForm",employee);
-		model.addObject("employeeList", employeeList);
-				
-		return model;
-	}
 	
-	@RequestMapping(value = "/employee/exportContract", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/document/exportContract", method = RequestMethod.GET)
 	public  ResponseEntity<byte[]> exportContract() {
 		//model.put("importInfoForm", new ImportInfoForm()); 
 		logger.info("exportContract() is executed");
@@ -144,7 +155,7 @@ public class DocumentController {
 		ResponseEntity<byte[]> response = null;
 		try {
 			String empId = "JM1";
-			EmployeeModel model = employeeService.getEmployeeById(empId);
+			DocumentModel model = documentService.getDocument(empId);
 			if (model == null) return null;
 			
 			String fileName = "D:/1.Projects/Jmchr.git/gpm/Sources/Hop_Dong_Lao_Dong.doc";
@@ -155,8 +166,6 @@ public class DocumentController {
 			HWPFDocument document = new HWPFDocument(fistream);
 			
 		    document.getRange().replaceText("JMCHR1", model.getName());
-		    document.getRange().replaceText("JMCHR2", model.getEmpId());
-		    document.getRange().replaceText("JMCHR3", model.getStartdate());
 		    
 		    //String newFileName = "/home/danhngo/Projects/Jmchr/gpm.git/Sources/Hop_Dong_Lao_Dong2.doc";
 		    String newFileName = "D:/1.Projects/Jmchr.git/gpm/Sources/Hop_Dong_Lao_Dong2.doc";
@@ -204,16 +213,7 @@ public class DocumentController {
 	
 	
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Map<String, Object> model) {
-
-		logger.debug("index() is executed!");
-
-		//model.put("title", employeeService.getTitle(""));
-		//model.put("msg", employeeService.getDesc());
-		
-		return "index";
-	}
+	
 
 	/*@RequestMapping(value = "/hello/{name:.+}", method = RequestMethod.GET)
 	public ModelAndView hello(@PathVariable("name") String name) {

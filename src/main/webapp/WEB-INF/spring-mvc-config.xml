@@ -20,9 +20,6 @@
 	</bean>
  
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-	
-	
-	 
 		
 	<mvc:annotation-driven>
 	    <mvc:message-converters>

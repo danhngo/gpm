@@ -4,8 +4,8 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 
-	<display-name>JMC HR</display-name>
-	<description>Joy Me Catering HR Management System</description>
+	<display-name>GPM</display-name>
+	<description>Paper Management System</description>
 
 	<!-- For web context -->
 	<servlet>
