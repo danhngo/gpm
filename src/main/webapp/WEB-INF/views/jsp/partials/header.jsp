@@ -17,7 +17,7 @@
 <s:url value="/resources/core/js/bootstrap.min.js" var="bootstrapJs" />
 <s:url value="/resources/core/js/bootstrap-hover-dropdown.min.js" var="bootstrapHoverJs" />
 <s:url value="/resources/core/js/bootstrap-filestyle.min.js" var="bootstrapFileJs" />
-<s:url value="/resources/core/js/gpm.js" var="gpmJs" />
+<s:url value="/resources/core/js/document.js" var="documentJs" />
 <s:url value="/resources/core/js/jquery.dataTables.min.js" var="jqueryDatatableJs" />
 <s:url value="/resources/core/js/dataTables.bootstrap.js" var="dataTablesBootstrapJs" />
 
@@ -25,7 +25,7 @@
 <script src="${bootstrapJs}"></script>
 <script src="${bootstrapHoverJs}"></script>
 <script src="${bootstrapFileJs}"></script>
-<script src="${gpmJs}"></script>
+<script src="${documentJs}"></script>
 <script src="${jqueryDatatableJs}"></script>
 <script src="${dataTablesBootstrapJs}"></script>
 <%-- <script src="${bootstrapModalJs}"></script> --%>
@@ -40,7 +40,7 @@
        <span class="icon-bar"></span>
        <span class="icon-bar"></span>
      </button>
-     <a class="navbar-brand" href="/gpm">PM</a>
+     <a class="navbar-brand" href="/gpm/document/list">PM</a>
      <div class="navbar-collapse nav-collapse collapse navbar-header">
        <ul class="nav navbar-nav">
          <li class="dropdown">
@@ -51,6 +51,16 @@
              <li><a href="/gpm/document/import">Thêm</a></li>
            </ul>
          </li>
+         
+          <li class="dropdown">
+           <a href="#" class="dropdown-toggle js-activated">Người Dùng<b class="caret"></b></a>
+           <ul class="dropdown-menu">
+             <li><a href="/gpm/document/list">Quản Lý</a></li>
+             <li class="divider"></li>
+             <li><a href="/gpm/document/import">Thêm</a></li>
+           </ul>
+         </li>
+         
          <li class="dropdown">
            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Tổng Hợp<b class="caret"></b></a>
            <ul class="dropdown-menu">

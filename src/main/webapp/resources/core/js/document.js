@@ -6,9 +6,9 @@ $(function(){
 		    "keyboard"  : "true"
 		}
 	
-	$('body').on('click', 'a#btnDeleteEmp', function() {
+	$('body').on('click', 'a#btnDeleteDoc', function() {
 		var isOk = false;
-		$('#tbemplist tbody tr').each(function() {
+		$('#tbDoclist tbody tr').each(function() {
 	       if ( $(this).hasClass('highlight') ) {
 	    	   //Show confirmation
 	    	   isOk = true;
@@ -23,15 +23,15 @@ $(function(){
 	
 	$('body').on('click', 'button#btnConfirmDelete', function() {
 		
-		$('#tbemplist tbody tr').each(function() {
+		$('#tbDoclist tbody tr').each(function() {
 	       if ( $(this).hasClass('highlight') ) {
 	    	  $('#modalConfirmDelete').modal('toggle');
 	    	   
 	          var $row = $(this);
-	          var selectedEmpId = $row.find("td:first").text();
+	          var selectedDocId = $row.find("td:first").text();
 	          $row.remove();
 	          $.ajax({
-	 	         url: '/gpm/employee/delete',
+	 	         url: '/gpm/document/delete',
 	 	         type: 'post',
 	 	         dataType: 'application/json',
 	 	         data: selectedEmpId,
@@ -45,14 +45,14 @@ $(function(){
 	});
 	
 		
-	$('body').on('click', 'a#btnModifyEmp', function() {
+	$('body').on('click', 'a#btnModifyDoc', function() {
 		var isOk = false;
-		$('#tbemplist tbody tr').each(function() {
+		$('#tbDoclist tbody tr').each(function() {
 	       if ( $(this).hasClass('highlight') ) {
 	    	   isOk = true;
-	    	   copyEmployeeData($(this));
-	    	   $('#modalAddEmployee').modal(options);
-	    	   $('#modalAddEmployee').find('.modal-title').text('Modify Employee');
+	    	   copyDocumentData($(this));
+	    	   $('#modalAddDocument').modal(options);
+	    	   $('#modalAddDocument').find('.modal-title').text('Modify Document');
 	           return;
 	       }
 	     });
@@ -62,11 +62,11 @@ $(function(){
 	});
 	
 	$('body').on('click', 'a#btnAddEmp', function() {
-	   $('#modalAddEmployee').modal(options);
- 	   $('#modalAddEmployee').find('.modal-title').text('Add Employee');
+	   $('#modalAddDocument').modal(options);
+ 	   $('#modalAddDocument').find('.modal-title').text('Add Document');
 	});
 	
-	function copyEmployeeData(row) {
+	function copyDocumentData(row) {
 		var values = row.find("td");
 		
 	    $("input#textEmpId").val(values[0].innerText);
@@ -78,7 +78,7 @@ $(function(){
 	
 		
 	$('body').on('click', '#btnSaveChanges', function() {
-		$('#formAddEmployee').submit();
+		$('#formAddDocument').submit();
 	});
 	
 	$('body').on('click', 'a#btnimport', function() {
@@ -86,24 +86,11 @@ $(function(){
 		
 		$('#importInfoForm').submit();
 		
-		/*var filePath = $("input#filePath").val();
-		console.log("filePath ",filePath);
-		
-		 $.ajax({
-	         url: '/gpm/employee/importexcel',
-	         type: 'post',
-	         dataType: 'json',
-	         data: filePath,
-	         success: function(data) {
-	             alert(data);
-	         }
-		 });*/
-		
 	});
 	
 	$('body').on('click', 'a#btnimportX', function() {
 		
-		$('#importInfoForm').action = '/gpm/employee/extractdata';
+		$('#importInfoForm').action = '/gpm/document/extractdata';
 		$('#importInfoForm').submit();
 		
 	});
@@ -112,7 +99,7 @@ $(function(){
 	$('body').on('click', 'a#btnexportcontract', function() {
 		var empId = "JM1";
 		 $.ajax({
-	         url: '/gpm/employee/exportContract',
+	         url: '/gpm/document/exportContract',
 	         type: 'GET',
 	         data: empId,
 	         dataType: 'text',	         

@@ -32,18 +32,18 @@ import cs.gpm.form.ImportInfoForm;
 import cs.gpm.model.document.DocumentModel;
 import cs.gpm.service.document.DocumentService;
 
-@Controller
+@Controller("document")
 public class DocumentController {
 
 	private final Logger logger = LoggerFactory.getLogger(DocumentController.class);
 	private final DocumentService documentService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Map<String, Object> model) {
+	public ModelAndView index(Map<String, Object> model) {
 
 		logger.debug("index() is executed!");
-		
-		return "index";
+		return getDocumentList();
+		//return "index";
 	}
 
 	@Autowired
