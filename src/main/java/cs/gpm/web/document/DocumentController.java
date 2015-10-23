@@ -80,7 +80,7 @@ public class DocumentController {
 		
 	
 	@RequestMapping(value = "/document/update", method = RequestMethod.POST)
-	public ModelAndView updateEmp(@ModelAttribute DocumentModel model) {
+	public ModelAndView updateEmp(@ModelAttribute DocumentModel model,@RequestParam("file") MultipartFile file) {
 		logger.info("value() is executed");
 		documentService.updateDocument(model);
 		

@@ -61,7 +61,7 @@ $(function(){
 		}
 	});
 	
-	$('body').on('click', 'a#btnAddEmp', function() {
+	$('body').on('click', 'a#btnAddDoc', function() {
 	   $('#modalAddDocument').modal(options);
  	   $('#modalAddDocument').find('.modal-title').text('Add Document');
 	});
